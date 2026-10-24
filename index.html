@@ -79,7 +79,14 @@
     .links a:first-child { background: var(--accent); color: var(--bg); }
     .links a:hover { opacity: .85; }
     .video { position: relative; aspect-ratio: 16 / 9; margin: 20px 0; border-radius: 10px; overflow: hidden; background: #000; }
-    .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video iframe, .video button { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video button { padding: 0; cursor: pointer; background: #000 center / cover no-repeat; }
+    .video button::after {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 68px; height: 48px;
+      transform: translate(-50%, -50%); border-radius: 12px; background: rgba(0, 0, 0, .75)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='white'/%3E%3C/svg%3E") center / 28px no-repeat;
+    }
+    .video button:hover::after { background-color: #c00; }
     .gallery {
       display: flex; gap: 12px; overflow-x: auto; margin: 20px 0;
       padding-bottom: 6px; scroll-snap-type: x mandatory;
@@ -124,13 +131,24 @@
         <h2>${esc(p.title)}</h2>
         <p class="tagline">${esc(p.tagline)}</p>
         <p>${esc(p.summary)}</p>
-        ${p.youtube ? `<div class="video"><iframe src="https://www.youtube.com/embed/${esc(p.youtube)}" title="${esc(p.title)} presentation" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>` : ""}
+        ${p.youtube ? `<div class="video"><button type="button" data-yt="${esc(p.youtube)}" data-title="${esc(p.title)}" aria-label="Play the ${esc(p.title)} presentation" style="background-image:url('https://i.ytimg.com/vi/${esc(p.youtube)}/hqdefault.jpg')"></button></div>` : ""}
         <ul>${p.highlights.map(h => `<li>${esc(h)}</li>`).join("")}</ul>
         ${p.images ? `<div class="gallery">${p.images.map(i => `<a href="${esc(i.src)}" target="_blank" rel="noopener"><img src="${esc(i.src)}" alt="${esc(i.alt)}" loading="lazy"></a>`).join("")}</div>` : ""}
         <ul class="chips">${p.stack.map(s => `<li>${esc(s)}</li>`).join("")}</ul>
         <div class="links">${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>
         ${p.note ? `<p class="note">${esc(p.note)}</p>` : ""}
       </article>`).join("");
+
+    // Load the YouTube player only when someone presses play
+    document.querySelectorAll(".video button").forEach(b => b.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = `https://www.youtube.com/embed/${b.dataset.yt}?autoplay=1`;
+      f.title = `${b.dataset.title} presentation`;
+      f.allow = "autoplay; encrypted-media; picture-in-picture";
+      f.referrerPolicy = "strict-origin-when-cross-origin";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    }));
   </script>
 </body>
 </html>
