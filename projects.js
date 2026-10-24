@@ -2,6 +2,27 @@
 // Optional fields: images (chart gallery), youtube (the video ID, e.g. "dQw4w9WgXcQ"), note.
 window.PROJECTS = [
   {
+    title: "Hotel Guest Analytics",
+    tagline: "Final project for Stanford's Code in Place (2021): segmenting hotel guests by value across Swiss cantons",
+    summary:
+      "A Python program that helps a hotel see where its most valuable guests come from. It scores every guest " +
+      "by yearly value, groups them by home canton, saves a report and charts, and lets staff look up guests " +
+      "from the command line.",
+    youtube: "Ev7-rtgOqd0",
+    highlights: [
+      "Generates a realistic test guest book of 239 guests (names, home cantons with the larger ones weighted more heavily, visits, room rates, nights and extra spending) and saves it as JSON.",
+      "Values each guest as visits per year × (average room revenue + average ancillary revenue) and sorts them into high-value, profitable and underperforming groups.",
+      "Counts each group per canton, works out each canton's share of high-value guests, and writes a text report plus five seaborn bar charts.",
+      "An interactive command-line menu to list guests by canton, by value group, by number of visits or by length of stay."
+    ],
+    stack: ["Python", "seaborn", "matplotlib", "JSON", "Command-line interface"],
+    links: [
+      { label: "Watch on YouTube", url: "https://www.youtube.com/watch?v=Ev7-rtgOqd0" },
+      { label: "Analysis script", url: "https://github.com/humanismContributor/humanismContributor.github.io/blob/main/projects/hotel-guests/project.py" },
+      { label: "Guest data generator", url: "https://github.com/humanismContributor/humanismContributor.github.io/blob/main/projects/hotel-guests/create_guests.py" }
+    ]
+  },
+  {
     title: "AI Adoption Across Countries and Industries",
     tagline: "Exploratory data analysis in R of 145,000 records of AI tool adoption",
     summary:
@@ -26,7 +47,7 @@ window.PROJECTS = [
     ],
     links: [
       { label: "Watch on YouTube", url: "https://youtu.be/SHCFpWCBgis" },
-      { label: "R script", url: "projects/ai-adoption/analysis.R" }
+      { label: "R script", url: "https://github.com/humanismContributor/humanismContributor.github.io/blob/main/projects/ai-adoption/analysis.R" }
     ]
   },
   {
