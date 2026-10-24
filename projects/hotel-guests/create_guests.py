@@ -184,6 +184,8 @@ def last_name_gen():
         last_name = 'Seematter'
     elif last_name == 18:
         last_name = 'Burch'
+    elif last_name == 19:
+        last_name = 'Keller'
     elif last_name == 20:
         last_name = 'Odermatt'
     elif last_name == 21:

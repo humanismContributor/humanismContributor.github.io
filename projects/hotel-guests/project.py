@@ -157,9 +157,7 @@ def main():
 
 def find_percent(total, actual, new_dict):
     for count in total:
-        percent = str(100 * (actual[count] / total[count]))
-        percent = float(percent[:2]) + ((float(percent[2:]) * 2))
-        new_dict[count] = int(percent)
+        new_dict[count] = round(100 * actual.get(count, 0) / total[count])
 
 
 def per_canton(canton_list, canton):
