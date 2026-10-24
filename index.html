@@ -124,7 +124,7 @@
         <h2>${esc(p.title)}</h2>
         <p class="tagline">${esc(p.tagline)}</p>
         <p>${esc(p.summary)}</p>
-        ${p.youtube ? `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(p.youtube)}" title="${esc(p.title)} presentation" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>` : ""}
+        ${p.youtube ? `<div class="video"><iframe src="https://www.youtube.com/embed/${esc(p.youtube)}" title="${esc(p.title)} presentation" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>` : ""}
         <ul>${p.highlights.map(h => `<li>${esc(h)}</li>`).join("")}</ul>
         ${p.images ? `<div class="gallery">${p.images.map(i => `<a href="${esc(i.src)}" target="_blank" rel="noopener"><img src="${esc(i.src)}" alt="${esc(i.alt)}" loading="lazy"></a>`).join("")}</div>` : ""}
         <ul class="chips">${p.stack.map(s => `<li>${esc(s)}</li>`).join("")}</ul>
