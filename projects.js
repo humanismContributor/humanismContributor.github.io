@@ -15,6 +15,7 @@ window.PROJECTS = [
       "Main finding: adoption barely varies. Every group averages between 49.5 % and 50.3 %, and rates are spread evenly from 0 to 100 %. Most of the variation is in which tools people use: ChatGPT appears in 40 % of records, Claude in 5 %.",
       "That flatness, together with random-text user feedback, shows the dataset is synthetic. A key lesson was to check the scale of a difference before reading a trend into it."
     ],
+    youtube: "SHCFpWCBgis",
     stack: ["R", "tidyverse", "ggplot2", "ggridges", "patchwork", "Data visualisation"],
     images: [
       { src: "projects/ai-adoption/country_analysis.png", alt: "Bar chart of mean AI adoption by country next to a heatmap of country by AI tool" },
@@ -24,6 +25,7 @@ window.PROJECTS = [
       { src: "projects/ai-adoption/yoy_trends.png", alt: "Year-over-year adoption from 2023 to 2024 by company size, industry and age group" }
     ],
     links: [
+      { label: "Watch on YouTube", url: "https://youtu.be/SHCFpWCBgis" },
       { label: "R script", url: "projects/ai-adoption/analysis.R" }
     ]
   },
